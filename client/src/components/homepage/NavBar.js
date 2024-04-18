@@ -3,9 +3,9 @@ import Title from "./Title";
 import MainMenu from "./MainMenu";
 import DonateButton from "./DonateButton";
 
-const Header = () => {
+const NavBar = () => {
   return (
-    <header className="bg-gray-100 py-2 px-3">
+    <header className="fixed top-0 left-0 right-0 bg-gray-100 py-2 px-3 z-50">
       <div className="container mx-auto flex flex-row items-center justify-between">
         <Title />
         <MainMenu />
@@ -15,4 +15,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default NavBar;

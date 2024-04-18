@@ -1,14 +1,16 @@
 import React from "react";
-import MainMenu from "./Header";
+import NavBar from "./NavBar";
 import Banner from "./Banner";
 import Footer from "./Footer";
 
 const Homepage = () => {
   return (
     <div>
-      <MainMenu />
-      <Banner />
-      <Footer />
+      <NavBar />
+      <div className="pt-6">
+        <Banner />
+        <Footer />
+      </div>
     </div>
   );
 };
