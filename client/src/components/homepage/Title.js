@@ -1,11 +1,5 @@
-import React from "react";
-
 const Title = () => {
-  return (
-    <div>
-      <h1>Title</h1>
-    </div>
-  );
+  return <h1 className="text-l font-bold text-gray-800">Adopt your Bestie</h1>;
 };
 
 export default Title;
