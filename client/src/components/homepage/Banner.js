@@ -1,6 +1,7 @@
 import React from "react";
 import { reviews } from "../../utils/reviews";
 import ReviewBadge from "../reviews/ReviewBadge";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   const averageReview =
@@ -25,9 +26,12 @@ const Banner = () => {
             Your Bestie makes it simple to find and nurture happiness through
             adoption.
           </p>
-          <button className="bg-purple-600 text-white font-bold py-2 px-6 rounded-full hover:bg-purple-700 transition-all duration-300">
+          <Link
+            to={"/pets"}
+            className="bg-purple-600 text-white font-bold py-2 px-6 rounded-full hover:bg-purple-700 transition-all duration-300"
+          >
             View pets
-          </button>
+          </Link>
         </div>
         <div className="order-1 md:order-2 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-5">
           <img

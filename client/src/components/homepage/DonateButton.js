@@ -1,10 +1,13 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const DonateButton = () => {
   return (
-    <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full transition-colors">
+    <Link
+      to={"/donate"}
+      className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full transition-colors"
+    >
       Donate
-    </button>
+    </Link>
   );
 };
 export default DonateButton;

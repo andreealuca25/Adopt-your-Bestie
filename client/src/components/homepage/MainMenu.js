@@ -1,40 +1,56 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const MainMenu = () => {
   return (
     <nav>
       <ul className="flex space-x-2">
         <li>
-          <a
-            href="#aboutUs"
+          <Link
+            to={"/"}
+            className="text-sm font-bold text-purple-600 bold hover:text-gray-800 transition-colors"
+          >
+            Homepage
+          </Link>
+        </li>
+        <li>
+          <Link
+            to={"/about"}
             className="text-sm text-gray-600 hover:text-gray-800 transition-colors"
           >
             About us
-          </a>
+          </Link>
         </li>
         <li>
-          <a
-            href="#pets"
+          <Link
+            to={"/pets"}
             className="text-sm text-gray-600 hover:text-gray-800 transition-colors"
           >
             Pets
-          </a>
+          </Link>
         </li>
         <li>
-          <a
-            href="#lostAndFound"
+          <Link
+            to={"/lostAndFound"}
             className="text-sm text-gray-600 hover:text-gray-800 transition-colors"
           >
             Lost & Found
-          </a>
+          </Link>
         </li>
         <li>
-          <a
-            href="#reviews"
+          <Link
+            to={"/reviews"}
             className="text-sm text-gray-600 hover:text-gray-800 transition-colors"
           >
             Reviews
-          </a>
+          </Link>
+        </li>
+        <li>
+          <Link
+            to={"/contact"}
+            className="text-sm text-gray-600 hover:text-gray-800 transition-colors"
+          >
+            Contact us
+          </Link>
         </li>
       </ul>
     </nav>

@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-yellow-500 text-white py-2 px-2">
-      <div className="flex justify-between items-center">
+    <footer className="fixed bottom-0 left-0 right-0 bg-yellow-500 text-white py-2 px-2 z-50">
+      <div className="container mx-auto flex justify-between items-center">
         <div>
           <a
             href="/"
