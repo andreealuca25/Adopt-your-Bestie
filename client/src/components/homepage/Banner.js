@@ -9,7 +9,7 @@ const Banner = () => {
     reviews.length;
 
   return (
-    <div className="bg-white text-center rounded-lg shadow-lg overflow-hidden p-10">
+    <div className="bg-white text-center rounded-lg shadow-lg overflow-hidden p-10  min-h-screen">
       <div className="flex flex-row justify-center">
         <h2 className="text-4xl font-extrabold text-gray-800 mb-5">
           FIND YOURSELF A TRUE FRIEND

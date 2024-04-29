@@ -23,14 +23,19 @@ const DonationForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    //TODO: validate the formData and send it to the server or use PayPal
+    //TODO: validate form data and send it to the server
+    console.log(formData);
     alert("Thank you for your donation!");
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen ">
+    <div className="flex flex-col items-center justify-center min-h-screen">
       <h2 className="text-lg font-semibold mb-6">Make a Donation</h2>
-      <div className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg grid gap-4 grid-cols-2 grid-rows-3">
+
+      <form
+        onSubmit={handleSubmit}
+        className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg grid gap-4 grid-cols-2 grid-rows-3"
+      >
         <div className="mb-4">
           <label
             htmlFor="firstName"
@@ -84,6 +89,7 @@ const DonationForm = () => {
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>
+
         <div className="mb-4">
           <label
             htmlFor="amount"
@@ -102,6 +108,7 @@ const DonationForm = () => {
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>
+
         <div className="mb-4">
           <label
             htmlFor="phoneNumber"
@@ -195,15 +202,16 @@ const DonationForm = () => {
             placeholder="Please fill your address"
           />
         </div>
+
         <div className="col-span-2 flex justify-center items-center">
           <button
-            onClick={handleSubmit}
+            type="submit"
             className="bg-purple-600 text-white font-bold py-2 px-6 rounded-full hover:bg-purple-700 transition-all duration-300"
           >
             Donate
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 };
