@@ -26,10 +26,13 @@ public class PetService {
     public Pet updatePet(Long id, Pet pet) {
         Pet existingPet = petRepository.findById(id).orElse(null);
         if (existingPet != null) {
-            existingPet.setType(pet.getType());
             existingPet.setName(pet.getName());
-            existingPet.setSex(pet.getSex());
-            existingPet.setYears(pet.getYears());
+            existingPet.setPetType(pet.getPetType());
+            existingPet.setBreed(pet.getBreed());
+            existingPet.setGender(pet.getGender());
+            existingPet.setAge(pet.getAge());
+            existingPet.setIcon(pet.getIcon());
+            existingPet.setDescription(pet.getDescription());
             return petRepository.save(existingPet);
         } else {
             return null;

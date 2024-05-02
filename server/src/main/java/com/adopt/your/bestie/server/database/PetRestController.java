@@ -29,8 +29,8 @@ public class PetRestController {
     }
 
     @PutMapping("/{id}")
-    public Pet updatePet(@PathVariable Long id, @RequestBody Pet book) {
-        return petService.updatePet(id, book);
+    public Pet updatePet(@PathVariable Long id, @RequestBody Pet pet) {
+        return petService.updatePet(id, pet);
     }
 
     @DeleteMapping("/{id}")

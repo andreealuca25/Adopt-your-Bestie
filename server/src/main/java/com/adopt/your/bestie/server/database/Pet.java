@@ -15,17 +15,23 @@ public class Pet {
     private Long id;
 
     private String name;
-    private String type;
-    private String sex;
-    private Integer years;
+    private String petType;
+    private String breed;
+    private String gender;
+    private String age;
+    private String icon;
+    private String description;
 
     public Pet() {
     }
 
-    public Pet(String name, String type, String sex, Integer years) {
+    public Pet(String name, String petType, String breed, String gender, String age, String icon, String description) {
         this.name = name;
-        this.type = type;
-        this.sex = sex;
-        this.years = years;
+        this.petType = petType;
+        this.breed = breed;
+        this.gender = gender;
+        this.age = age;
+        this.icon = icon;
+        this.description = description;
     }
 }
