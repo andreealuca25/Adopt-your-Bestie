@@ -1,5 +1,6 @@
 export const pets = [
   {
+    id: 0,
     name: "Rascal",
     petType: "dog",
     breed: "Pug",
@@ -9,6 +10,7 @@ export const pets = [
     description: "A playful Pug with a curious nature.",
   },
   {
+    id: 1,
     name: "Bandit",
     petType: "dog",
     breed: "French Bull Dog",
@@ -18,6 +20,7 @@ export const pets = [
     description: "A French Bull Dog with a lot of energy.",
   },
   {
+    id: 2,
     name: "Fin",
     petType: "dog",
     breed: "Weiner Dog",
@@ -27,6 +30,7 @@ export const pets = [
     description: "A friendly Weiner Dog with a gentle temperament.",
   },
   {
+    id: 3,
     name: "Luna",
     petType: "cat",
     breed: "Persian Cat",
@@ -36,6 +40,7 @@ export const pets = [
     description: "A Persian cat with a calm demeanor.",
   },
   {
+    id: 4,
     name: "Whiskers",
     petType: "cat",
     breed: "Siamese Cat",
@@ -45,6 +50,7 @@ export const pets = [
     description: "A Siamese cat with striking blue eyes and a curious nature.",
   },
   {
+    id: 5,
     name: "Polly",
     petType: "bird",
     breed: "Parrot",
@@ -54,6 +60,7 @@ export const pets = [
     description: "A colorful parrot with a vibrant personality.",
   },
   {
+    id: 6,
     name: "Thumper",
     petType: "rabbit",
     breed: "Holland Lop",
@@ -63,6 +70,7 @@ export const pets = [
     description: "A gentle Holland Lop rabbit with floppy ears.",
   },
   {
+    id: 7,
     name: "Coco",
     petType: "hamster",
     breed: "Syrian Hamster",

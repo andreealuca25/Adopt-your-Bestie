@@ -59,8 +59,11 @@ const Pets = () => {
 
         <div className="w-full max-w-3xl p-8 bg-white shadow-md rounded-lg">
           <div className="flex flex-wrap items-center gap-4 mb-6">
-            <div class="flex flex-col">
-              <label class="text-sm font-medium text-gray-700" htmlFor="breed">
+            <div className="flex flex-col">
+              <label
+                className="text-sm font-medium text-gray-700"
+                htmlFor="breed"
+              >
                 Breed:
               </label>
               <input
@@ -68,12 +71,15 @@ const Pets = () => {
                 name="breed"
                 value={filter.breed}
                 onChange={handleFilterChange}
-                class="px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                className="px-3 py-2 border border-gray-300 rounded-md shadow-sm"
               />
             </div>
 
-            <div class="flex flex-col">
-              <label class="text-sm font-medium text-gray-700" htmlFor="gender">
+            <div className="flex flex-col">
+              <label
+                className="text-sm font-medium text-gray-700"
+                htmlFor="gender"
+              >
                 Gender:
               </label>
               <select
@@ -81,7 +87,7 @@ const Pets = () => {
                 name="gender"
                 value={filter.gender}
                 onChange={handleFilterChange}
-                class="px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                className="px-3 py-2 border border-gray-300 rounded-md shadow-sm"
               >
                 <option value="">Any</option>
                 <option value="Male">Male</option>
@@ -89,8 +95,11 @@ const Pets = () => {
               </select>
             </div>
 
-            <div class="flex flex-col">
-              <label class="text-sm font-medium text-gray-700" htmlFor="age">
+            <div className="flex flex-col">
+              <label
+                className="text-sm font-medium text-gray-700"
+                htmlFor="age"
+              >
                 Age:
               </label>
               <select
@@ -98,7 +107,7 @@ const Pets = () => {
                 name="age"
                 value={filter.age}
                 onChange={handleFilterChange}
-                class="px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                className="px-3 py-2 border border-gray-300 rounded-md shadow-sm"
               >
                 <option value="">Any</option>
                 <option value="6 months">6 months</option>
@@ -106,11 +115,21 @@ const Pets = () => {
                 <option value="2 years">2 years</option>
               </select>
             </div>
+
+            <div className="flex flex-col"></div>
+            <button
+              className="px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+              onClick={() => {
+                setFilter({ breed: "", gender: "", age: "", petType: "" });
+              }}
+            >
+              Reset
+            </button>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 items-end">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 items-end">
             {filteredPets.map((pet, index) => (
-              <PetBadge key={index} pet={pet} />
+              <PetBadge pet={pet} key={index} />
             ))}
           </div>
         </div>

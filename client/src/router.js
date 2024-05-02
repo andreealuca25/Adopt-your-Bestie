@@ -7,6 +7,7 @@ import AboutUsContainer from "./components/aboutUs/AboutUsContainer";
 import PetsContainer from "./components/pets/PetsContainer";
 import ContactContainer from "./components/contact/ContactContainer";
 import ReviewsContainer from "./components/reviews/ReviewsContainer";
+import AdoptionFormContainer from "./components/pets/AdoptionFormContainer";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: "/reviews",
     element: <ReviewsContainer />,
+  },
+  {
+    path: "/pet/adopt/:petId",
+    element: <AdoptionFormContainer />,
   },
   {
     path: "*",
