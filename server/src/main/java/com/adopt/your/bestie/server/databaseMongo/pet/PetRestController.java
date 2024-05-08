@@ -1,6 +1,7 @@
-package com.adopt.your.bestie.server.database.pet;
+package com.adopt.your.bestie.server.databaseMongo.pet;
 
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,8 +20,8 @@ public class PetRestController {
     }
 
     @GetMapping("/{id}")
-    public Pet getPetById(@PathVariable Long id) {
-        return petService.getPetById(id);
+    public Pet getPetById(@PathVariable String id) {
+        return petService.getPetById(new ObjectId(id));
     }
 
     @PostMapping("/add")
@@ -29,12 +30,12 @@ public class PetRestController {
     }
 
     @PutMapping("/{id}")
-    public Pet updatePet(@PathVariable Long id, @RequestBody Pet pet) {
-        return petService.updatePet(id, pet);
+    public Pet updatePet(@PathVariable String id, @RequestBody Pet pet) {
+        return petService.updatePet(new ObjectId(id), pet);
     }
 
     @DeleteMapping("/{id}")
-    public void deletePet(@PathVariable Long id) {
-        petService.deletePet(id);
+    public void deletePet(@PathVariable String id) {
+        petService.deletePet(new ObjectId(id));
     }
 }
