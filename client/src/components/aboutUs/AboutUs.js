@@ -1,8 +1,26 @@
-import React from "react";
-import { teamMembers } from "../../utils/teamMembers";
+import React, { useState, useEffect } from "react";
 import MemberBadge from "./MemberBadge";
+import axios from "axios";
 
 const AboutUs = () => {
+  const [teamMembers, setTeamMembers] = useState([]);
+  useEffect(() => {
+    const fetchTeamMembers = async () => {
+      axios
+        .get("http://localhost:8080/team")
+        .then((response) => {
+          setTeamMembers(response.data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    };
+
+    fetchTeamMembers();
+
+    return () => {};
+  }, []);
+
   return (
     <div className="flex flex-col items-center justify-center w-full mb-10">
       <h2 className="text-lg font-semibold mb-6">About Us</h2>

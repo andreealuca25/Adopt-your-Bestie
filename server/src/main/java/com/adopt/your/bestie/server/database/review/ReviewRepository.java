@@ -1,9 +1,8 @@
-package com.adopt.your.bestie.server.database;
-
+package com.adopt.your.bestie.server.database.review;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PetRepository extends JpaRepository<Pet, Long> {
+public interface ReviewRepository extends JpaRepository<Review, Long> {
 
 }

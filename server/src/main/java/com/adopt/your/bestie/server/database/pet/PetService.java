@@ -1,4 +1,4 @@
-package com.adopt.your.bestie.server.database;
+package com.adopt.your.bestie.server.database.pet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

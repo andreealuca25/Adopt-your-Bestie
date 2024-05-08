@@ -1,15 +1,39 @@
 import React, { useState, useEffect } from "react";
 import PetBadge from "./PetBadge";
-import { pets, petTypes } from "../../utils/pets";
+import { petTypes } from "../../utils/pets";
+import axios from "axios";
 
 const Pets = () => {
-  const [filteredPets, setFilteredPets] = useState(pets);
+  const [pets, setPets] = useState([]);
+  const [filteredPets, setFilteredPets] = useState([]);
   const [filter, setFilter] = useState({
     breed: "",
     gender: "",
     age: "",
     petType: "",
   });
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPets = async () => {
+      axios
+        .get("http://localhost:8080/pets")
+        .then((response) => {
+          setPets(response.data);
+          setFilteredPets(response.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          setLoading(false);
+        });
+    };
+
+    fetchPets();
+
+    return () => {};
+  }, []);
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
@@ -40,7 +64,7 @@ const Pets = () => {
     });
 
     setFilteredPets(filtered);
-  }, [filter]);
+  }, [filter, pets]);
 
   return (
     <div className="flex flex-col items-center justify-center w-full min-h-screen p-10">
@@ -128,9 +152,15 @@ const Pets = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 items-end">
-            {filteredPets.map((pet, index) => (
-              <PetBadge pet={pet} key={index} />
-            ))}
+            {!loading ? (
+              filteredPets.map((pet, index) => (
+                <PetBadge pet={pet} key={index} />
+              ))
+            ) : (
+              <div className="text-purple-700 text-2xl flex justify-center items-center h-screen">
+                <p>Loading...</p>
+              </div>
+            )}
           </div>
         </div>
       </div>

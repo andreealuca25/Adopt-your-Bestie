@@ -1,4 +1,4 @@
-package com.adopt.your.bestie.server.database;
+package com.adopt.your.bestie.server.database.pet;
 
 import jakarta.persistence.*;
 import lombok.Getter;

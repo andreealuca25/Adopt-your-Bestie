@@ -1,4 +1,4 @@
-package com.adopt.your.bestie.server.database;
+package com.adopt.your.bestie.server.database.pet;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class PetRestController {
         return petService.getPetById(id);
     }
 
-    @PostMapping("")
+    @PostMapping("/add")
     public Pet createPet(@RequestBody Pet pet) {
         return petService.createPet(pet);
     }

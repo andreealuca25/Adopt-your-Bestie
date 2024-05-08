@@ -1,9 +1,27 @@
-import React from "react";
-import { reviews } from "../../utils/reviews";
+import React, { useState, useEffect } from "react";
 import ReviewBadge from "../reviews/ReviewBadge";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Banner = () => {
+  const [reviews, setReviews] = useState([]);
+  useEffect(() => {
+    const fetchReviews = async () => {
+      axios
+        .get("http://localhost:8080/reviews")
+        .then((response) => {
+          setReviews(response.data.filter((review) => review.id % 2 === 0));
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    };
+
+    fetchReviews();
+
+    return () => {};
+  }, []);
+
   const averageReview =
     reviews.reduce((total, reviewData) => total + reviewData.score, 0) /
     reviews.length;

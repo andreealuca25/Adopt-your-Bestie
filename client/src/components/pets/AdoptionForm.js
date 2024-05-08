@@ -1,10 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { pets } from "../../utils/pets";
+import axios from "axios";
 const AdoptionForm = () => {
   const { petId } = useParams();
+  const [pet, setPet] = useState({});
 
-  const pet = pets[petId];
+  useEffect(() => {
+    const fetchPets = async () => {
+      axios
+        .get(`http://localhost:8080/pets/${petId}`)
+        .then((response) => {
+          setPet(response.data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    };
+
+    fetchPets();
+
+    return () => {};
+  }, [petId]);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
