@@ -14,6 +14,7 @@ const Pets = () => {
   });
 
   const [loading, setLoading] = useState(true);
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   useEffect(() => {
     const fetchPets = async () => {
@@ -23,10 +24,12 @@ const Pets = () => {
           setPets(response.data);
           setFilteredPets(response.data);
           setLoading(false);
+          setShowErrorMessage(false);
         })
         .catch((error) => {
           console.error("Error:", error);
           setLoading(false);
+          setShowErrorMessage(true);
         });
     };
 
@@ -157,8 +160,17 @@ const Pets = () => {
                 <PetBadge pet={pet} key={index} />
               ))
             ) : (
-              <div className="text-purple-700 text-2xl flex justify-center items-center h-screen">
-                <p>Loading...</p>
+              <div className="col-span-full flex justify-center">
+                <p className="text-purple-700 text-xl text-center">
+                  Loading...
+                </p>
+              </div>
+            )}
+            {showErrorMessage && (
+              <div className="col-span-full flex justify-center">
+                <p className="text-purple-700 text-xl text-center">
+                  There are no results available at the moment.
+                </p>
               </div>
             )}
           </div>

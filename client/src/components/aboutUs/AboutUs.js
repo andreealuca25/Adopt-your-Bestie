@@ -33,20 +33,23 @@ const AboutUs = () => {
           finds a nurturing family, and every family finds their furry best
           friend.
         </p>
+        {teamMembers.length > 0 && (
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Meet the Team</h3>
 
-        <h3 className="text-xl font-semibold mb-4">Meet the Team</h3>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {teamMembers.map((member, index) => (
-            <MemberBadge
-              key={index}
-              name={member.name}
-              role={member.role}
-              description={member.description}
-              icon={member.icon}
-            />
-          ))}
-        </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {teamMembers.map((member, index) => (
+                <MemberBadge
+                  key={index}
+                  name={member.name}
+                  role={member.role}
+                  description={member.description}
+                  icon={member.icon}
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

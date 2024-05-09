@@ -23,8 +23,10 @@ const Banner = () => {
   }, []);
 
   const averageReview =
-    reviews.reduce((total, reviewData) => total + reviewData.score, 0) /
-    reviews.length;
+    reviews.length > 0
+      ? reviews.reduce((total, reviewData) => total + reviewData.score, 0) /
+        reviews.length
+      : 0;
 
   return (
     <div className="bg-white text-center rounded-lg shadow-lg overflow-hidden p-10  min-h-screen">
@@ -58,29 +60,31 @@ const Banner = () => {
             className="object-cover object-center rounded-lg"
           />
         </div>
-        <div className="order-3 md:order-3 flex flex-col items-center mb-4 md:mb-0">
-          <div className="flex items-center justify-center mb-2">
-            <span className="text-lg font-semibold text-gray-800 mr-2">
-              {averageReview.toFixed(1)} / 5
-            </span>
-            <span className="text-sm text-gray-500">
-              ({reviews.length} Reviews)
-            </span>
+        {reviews.length > 0 && (
+          <div className="order-3 md:order-3 flex flex-col items-center mb-4 md:mb-0">
+            <div className="flex items-center justify-center mb-2">
+              <span className="text-lg font-semibold text-gray-800 mr-2">
+                {averageReview.toFixed(1)} / 5
+              </span>
+              <span className="text-sm text-gray-500">
+                ({reviews.length} Reviews)
+              </span>
+            </div>
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">
+              Our happy pet owners
+            </h3>
+            <div>
+              {reviews.map((review, index) => (
+                <ReviewBadge
+                  key={index}
+                  personAndPetDetails={review.personAndPetDetails}
+                  description={review.description}
+                  score={review.score}
+                />
+              ))}
+            </div>
           </div>
-          <h3 className="text-lg font-semibold text-gray-800 mb-2">
-            Our happy pet owners
-          </h3>
-          <div>
-            {reviews.map((review, index) => (
-              <ReviewBadge
-                key={index}
-                personAndPetDetails={review.personAndPetDetails}
-                description={review.description}
-                score={review.score}
-              />
-            ))}
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );

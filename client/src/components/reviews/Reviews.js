@@ -22,14 +22,22 @@ const Reviews = () => {
 
   return (
     <div className="px-8">
-      {reviews.map((review, index) => (
-        <ReviewBadge
-          key={index}
-          personAndPetDetails={review.personAndPetDetails}
-          description={review.description}
-          score={review.score}
-        />
-      ))}
+      {reviews.length > 0 ? (
+        reviews.map((review, index) => (
+          <ReviewBadge
+            key={index}
+            personAndPetDetails={review.personAndPetDetails}
+            description={review.description}
+            score={review.score}
+          />
+        ))
+      ) : (
+        <div className="col-span-full flex justify-center">
+          <p className="text-xl text-center">
+            There are no results available at the moment.
+          </p>
+        </div>
+      )}
     </div>
   );
 };
