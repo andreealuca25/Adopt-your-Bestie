@@ -10,7 +10,7 @@ const Banner = () => {
       axios
         .get("http://localhost:8080/reviews")
         .then((response) => {
-          setReviews(response.data.filter((review) => review.id % 2 === 0));
+          setReviews(response.data);
         })
         .catch((error) => {
           console.error("Error:", error);
