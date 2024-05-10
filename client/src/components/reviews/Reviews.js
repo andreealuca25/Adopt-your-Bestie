@@ -22,13 +22,7 @@ const Reviews = () => {
   }, []);
 
   return (
-    <div className="px-8">
-      <Link
-        to={"/leaveAReview"}
-        className="bg-purple-600 text-white font-bold mx-1 py-2 px-6 rounded-full hover:bg-purple-700 transition-all duration-300"
-      >
-        Leave a Review
-      </Link>
+    <div className="flex flex-col items-center px-8">
       {reviews.length > 0 ? (
         reviews.map((review, index) => (
           <ReviewBadge
@@ -45,6 +39,12 @@ const Reviews = () => {
           </p>
         </div>
       )}
+      <Link
+        to={"/leaveAReview"}
+        className="bg-purple-600 text-white font-bold mx-1 my-4 py-2 px-6 rounded-full hover:bg-purple-700 transition-all duration-300"
+      >
+        Leave a Review
+      </Link>
     </div>
   );
 };
