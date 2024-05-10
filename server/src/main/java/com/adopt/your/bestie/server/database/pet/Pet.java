@@ -1,18 +1,26 @@
 package com.adopt.your.bestie.server.database.pet;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "pets")
+import com.adopt.your.bestie.server.util.ObjectIdSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+@Document("pets")
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class Pet {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @JsonSerialize(using = ObjectIdSerializer.class)
+    private ObjectId id;
 
     private String name;
     private String petType;
@@ -22,16 +30,4 @@ public class Pet {
     private String icon;
     private String description;
 
-    public Pet() {
-    }
-
-    public Pet(String name, String petType, String breed, String gender, String age, String icon, String description) {
-        this.name = name;
-        this.petType = petType;
-        this.breed = breed;
-        this.gender = gender;
-        this.age = age;
-        this.icon = icon;
-        this.description = description;
-    }
 }

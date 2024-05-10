@@ -1,5 +1,6 @@
 package com.adopt.your.bestie.server.database.review;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class ReviewRestController {
     }
 
     @GetMapping("/{id}")
-    public Review getReviewById(@PathVariable Long id) {
+    public Review getReviewById(@PathVariable ObjectId id) {
         return reviewService.getReviewById(id);
     }
 
@@ -28,12 +29,12 @@ public class ReviewRestController {
     }
 
     @PutMapping("/{id}")
-    public Review updateReview(@PathVariable Long id, @RequestBody Review review) {
+    public Review updateReview(@PathVariable ObjectId id, @RequestBody Review review) {
         return reviewService.updateReview(id, review);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteReview(@PathVariable Long id) {
+    public void deleteReview(@PathVariable ObjectId id) {
         reviewService.deleteReview(id);
     }
 }

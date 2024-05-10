@@ -1,31 +1,31 @@
 package com.adopt.your.bestie.server.database.team;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "teamMembers")
+import com.adopt.your.bestie.server.util.ObjectIdSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+
+@Document("teamMembers")
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class TeamMember {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @JsonSerialize(using = ObjectIdSerializer.class)
+    private ObjectId id;
 
     private String name;
     private String role;
     private String icon;
     private String description;
 
-    public TeamMember() {
-    }
-
-    public TeamMember(String name, String role, String icon, String description) {
-        this.name = name;
-        this.role = role;
-        this.icon = icon;
-        this.description = description;
-    }
 }

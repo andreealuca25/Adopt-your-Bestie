@@ -1,29 +1,28 @@
 package com.adopt.your.bestie.server.database.review;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "reviews")
+import com.adopt.your.bestie.server.util.ObjectIdSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+@Document("reviews")
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class Review {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @JsonSerialize(using = ObjectIdSerializer.class)
+    private ObjectId id;
 
     private String personAndPetDetails;
     private String description;
     private int score;
-
-    public Review() {
-    }
-
-    public Review(String personAndPetDetails, String description, int score) {
-        this.personAndPetDetails = personAndPetDetails;
-        this.description = description;
-        this.score = score;
-    }
 }

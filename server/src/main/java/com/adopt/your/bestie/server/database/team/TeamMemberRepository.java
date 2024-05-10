@@ -1,8 +1,9 @@
 package com.adopt.your.bestie.server.database.team;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TeamMemberRepository extends JpaRepository<TeamMember, Long> {
+public interface TeamMemberRepository extends MongoRepository<TeamMember, ObjectId> {
 
 }

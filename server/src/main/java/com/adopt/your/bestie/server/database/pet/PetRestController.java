@@ -1,4 +1,4 @@
-package com.adopt.your.bestie.server.databaseMongo.pet;
+package com.adopt.your.bestie.server.database.pet;
 
 
 import org.bson.types.ObjectId;

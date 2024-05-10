@@ -1,5 +1,6 @@
 package com.adopt.your.bestie.server.database.team;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class TeamMemberService {
         return teamMemberRepository.findAll();
     }
 
-    public TeamMember getTeamMemberById(Long id) {
+    public TeamMember getTeamMemberById(ObjectId id) {
         return teamMemberRepository.findById(id).orElse(null);
     }
 
@@ -23,7 +24,7 @@ public class TeamMemberService {
         return teamMemberRepository.save(teamMember);
     }
 
-    public TeamMember updateTeamMember(Long id, TeamMember teamMember) {
+    public TeamMember updateTeamMember(ObjectId id, TeamMember teamMember) {
         TeamMember existingTeamMember = teamMemberRepository.findById(id).orElse(null);
         if (existingTeamMember != null) {
             existingTeamMember.setName(teamMember.getName());
@@ -36,7 +37,7 @@ public class TeamMemberService {
         }
     }
 
-    public void deleteTeamMember(Long id) {
+    public void deleteTeamMember(ObjectId id) {
         teamMemberRepository.deleteById(id);
     }
 }

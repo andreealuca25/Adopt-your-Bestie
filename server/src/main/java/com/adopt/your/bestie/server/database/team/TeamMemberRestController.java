@@ -1,5 +1,6 @@
 package com.adopt.your.bestie.server.database.team;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class TeamMemberRestController {
     }
 
     @GetMapping("/{id}")
-    public TeamMember getTeamMemberById(@PathVariable Long id) {
+    public TeamMember getTeamMemberById(@PathVariable ObjectId id) {
         return teamMemberService.getTeamMemberById(id);
     }
 
@@ -28,12 +29,12 @@ public class TeamMemberRestController {
     }
 
     @PutMapping("/{id}")
-    public TeamMember updateTeamMember(@PathVariable Long id, @RequestBody TeamMember teamMember) {
+    public TeamMember updateTeamMember(@PathVariable ObjectId id, @RequestBody TeamMember teamMember) {
         return teamMemberService.updateTeamMember(id, teamMember);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTeamMember(@PathVariable Long id) {
+    public void deleteTeamMember(@PathVariable ObjectId id) {
         teamMemberService.deleteTeamMember(id);
     }
 }

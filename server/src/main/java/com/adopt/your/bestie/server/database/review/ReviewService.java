@@ -1,5 +1,6 @@
 package com.adopt.your.bestie.server.database.review;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class ReviewService {
         return reviewRepository.findAll();
     }
 
-    public Review getReviewById(Long id) {
+    public Review getReviewById(ObjectId id) {
         return reviewRepository.findById(id).orElse(null);
     }
 
@@ -23,7 +24,7 @@ public class ReviewService {
         return reviewRepository.save(review);
     }
 
-    public Review updateReview(Long id, Review review) {
+    public Review updateReview(ObjectId id, Review review) {
         Review existingReview = reviewRepository.findById(id).orElse(null);
         if (existingReview != null) {
             existingReview.setPersonAndPetDetails(review.getPersonAndPetDetails());
@@ -35,7 +36,7 @@ public class ReviewService {
         }
     }
 
-    public void deleteReview(Long id) {
+    public void deleteReview(ObjectId id) {
         reviewRepository.deleteById(id);
     }
 }
