@@ -8,6 +8,7 @@ import PetsContainer from "./components/pets/PetsContainer";
 import ContactContainer from "./components/contact/ContactContainer";
 import ReviewsContainer from "./components/reviews/ReviewsContainer";
 import AdoptionFormContainer from "./components/pets/AdoptionFormContainer";
+import FoundPetContainer from "./components/lostAndFound/FoundPetContainer";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
   {
     path: "/pet/adopt/:petId",
     element: <AdoptionFormContainer />,
+  },
+  {
+    path: "/lostAndFound/foundPet/:geoPosition",
+    element: <FoundPetContainer />,
   },
   {
     path: "*",
