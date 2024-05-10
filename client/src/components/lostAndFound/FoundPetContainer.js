@@ -1,17 +1,12 @@
 import React from "react";
 import FoundPetForm from "./FoundPetForm";
-import NavBar from "../homepage/NavBar";
-import Footer from "../homepage/Footer";
+import NavBarFooterWrapper from "../wrapper/NavBarFooterWrapper";
 
 const LostAndFoundFormContainer = () => {
   return (
-    <div>
-      <NavBar />
-      <div className="pt-6">
-        <FoundPetForm />
-        <Footer />
-      </div>
-    </div>
+    <NavBarFooterWrapper topPadding="pt-6">
+      <FoundPetForm />
+    </NavBarFooterWrapper>
   );
 };
 

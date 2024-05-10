@@ -1,16 +1,11 @@
 import React from "react";
-import NavBar from "../homepage/NavBar";
-import Footer from "../homepage/Footer";
+import NavBarFooterWrapper from "../wrapper/NavBarFooterWrapper";
 import AboutUs from "./AboutUs";
 const AboutUsContainer = () => {
   return (
-    <div>
-      <NavBar />
-      <div className="pt-20">
-        <AboutUs />
-        <Footer />
-      </div>
-    </div>
+    <NavBarFooterWrapper topPadding="pt-20">
+      <AboutUs />
+    </NavBarFooterWrapper>
   );
 };
 

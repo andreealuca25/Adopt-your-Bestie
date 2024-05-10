@@ -1,16 +1,11 @@
 import React from "react";
-import NavBar from "../homepage/NavBar";
-import Footer from "../homepage/Footer";
 import ContactUsForm from "./ContactUsForm";
+import NavBarFooterWrapper from "../wrapper/NavBarFooterWrapper";
 const ContactContainer = () => {
   return (
-    <div>
-      <NavBar />
-      <div className="pt-20">
-        <ContactUsForm />
-        <Footer />
-      </div>
-    </div>
+    <NavBarFooterWrapper topPadding="pt-20">
+      <ContactUsForm />
+    </NavBarFooterWrapper>
   );
 };
 

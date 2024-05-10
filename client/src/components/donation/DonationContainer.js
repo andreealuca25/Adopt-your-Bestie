@@ -1,16 +1,11 @@
 import React from "react";
-import NavBar from "../homepage/NavBar";
-import Footer from "../homepage/Footer";
+import NavBarFooterWrapper from "../wrapper/NavBarFooterWrapper";
 import DonationForm from "./DonationForm";
 const DonationContainer = () => {
   return (
-    <div>
-      <NavBar />
-      <div className="pt-6">
-        <DonationForm />
-        <Footer />
-      </div>
-    </div>
+    <NavBarFooterWrapper topPadding="pt-6">
+      <DonationForm />
+    </NavBarFooterWrapper>
   );
 };
 

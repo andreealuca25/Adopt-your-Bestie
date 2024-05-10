@@ -1,12 +1,13 @@
 import React from "react";
 import NavBarFooterWrapper from "../wrapper/NavBarFooterWrapper";
-import AdoptionForm from "./AdoptionForm";
-const AdoptionFormContainer = () => {
+import LeaveAReview from "./LeaveAReview";
+
+const LeaveAReviewContainer = () => {
   return (
     <NavBarFooterWrapper topPadding="pt-32">
-      <AdoptionForm />
+      <LeaveAReview />
     </NavBarFooterWrapper>
   );
 };
 
-export default AdoptionFormContainer;
+export default LeaveAReviewContainer;

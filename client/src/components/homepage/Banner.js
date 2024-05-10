@@ -46,12 +46,20 @@ const Banner = () => {
             Your Bestie makes it simple to find and nurture happiness through
             adoption.
           </p>
-          <Link
-            to={"/pets"}
-            className="bg-purple-600 text-white font-bold py-2 px-6 rounded-full hover:bg-purple-700 transition-all duration-300"
-          >
-            View pets
-          </Link>
+          <div className="flex justify-center">
+            <Link
+              to={"/pets"}
+              className="bg-purple-600 text-white font-bold mx-1 py-2 px-6 rounded-full hover:bg-purple-700 transition-all duration-300"
+            >
+              View pets
+            </Link>
+            <Link
+              to={"/leaveAReview"}
+              className="bg-purple-600 text-white font-bold mx-1 py-2 px-6 rounded-full hover:bg-purple-700 transition-all duration-300"
+            >
+              Leave a Review
+            </Link>
+          </div>
         </div>
         <div className="order-1 md:order-2 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-5">
           <img

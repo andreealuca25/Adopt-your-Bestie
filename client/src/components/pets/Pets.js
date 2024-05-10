@@ -22,6 +22,7 @@ const Pets = () => {
         .get("http://localhost:8080/pets")
         .then((response) => {
           setPets(response.data);
+          console.log(response.data);
           setFilteredPets(response.data);
           setLoading(false);
           setShowErrorMessage(false);

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReviewBadge from "./ReviewBadge";
 import axios from "axios";
+import { Link } from "react-router-dom";
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
@@ -22,6 +23,12 @@ const Reviews = () => {
 
   return (
     <div className="px-8">
+      <Link
+        to={"/leaveAReview"}
+        className="bg-purple-600 text-white font-bold mx-1 py-2 px-6 rounded-full hover:bg-purple-700 transition-all duration-300"
+      >
+        Leave a Review
+      </Link>
       {reviews.length > 0 ? (
         reviews.map((review, index) => (
           <ReviewBadge
