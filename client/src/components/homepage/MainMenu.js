@@ -1,56 +1,72 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 const MainMenu = () => {
+  const activeStyle =
+    "text-sm font-bold text-purple-500 bold hover:text-purple-600 transition-colors";
+  const defaultStyle =
+    "text-sm font-bold text-gray-600 hover:text-gray-800 transition-colors";
   return (
     <nav>
       <ul className="flex space-x-2">
         <li>
-          <Link
+          <NavLink
             to={"/"}
-            className="text-sm font-bold text-purple-600 bold hover:text-gray-800 transition-colors"
+            className={({ isActive }) =>
+              isActive ? activeStyle : defaultStyle
+            }
           >
             Homepage
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link
+          <NavLink
             to={"/about"}
-            className="text-sm text-gray-600 hover:text-gray-800 transition-colors"
+            className={({ isActive }) =>
+              isActive ? activeStyle : defaultStyle
+            }
           >
             About us
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link
+          <NavLink
             to={"/pets"}
-            className="text-sm text-gray-600 hover:text-gray-800 transition-colors"
+            className={({ isActive }) =>
+              isActive ? activeStyle : defaultStyle
+            }
           >
             Pets
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link
+          <NavLink
             to={"/lostAndFound"}
-            className="text-sm text-gray-600 hover:text-gray-800 transition-colors"
+            className={({ isActive }) =>
+              isActive ? activeStyle : defaultStyle
+            }
           >
             Lost & Found
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link
+          <NavLink
             to={"/reviews"}
-            className="text-sm text-gray-600 hover:text-gray-800 transition-colors"
+            className={({ isActive }) =>
+              isActive ? activeStyle : defaultStyle
+            }
           >
             Reviews
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link
+          <NavLink
             to={"/contact"}
-            className="text-sm text-gray-600 hover:text-gray-800 transition-colors"
+            className={({ isActive }) =>
+              isActive ? activeStyle : defaultStyle
+            }
           >
             Contact us
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </nav>
