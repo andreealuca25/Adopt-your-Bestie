@@ -50,7 +50,7 @@ const LeaveAReview = () => {
         <SubmitErrorPage typeOfData="review" />
       ) : requestStatus.success ? (
         <SuccessPage
-          typeOfData="review"
+          message="Your review has been submitted successfully!"
           redirectLink="/reviews"
           redirectMessage="Check your review here"
         />
