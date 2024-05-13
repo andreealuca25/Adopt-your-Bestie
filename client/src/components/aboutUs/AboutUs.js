@@ -4,6 +4,7 @@ import axios from "axios";
 
 const AboutUs = () => {
   const [teamMembers, setTeamMembers] = useState([]);
+
   useEffect(() => {
     const fetchTeamMembers = async () => {
       axios
@@ -17,15 +18,13 @@ const AboutUs = () => {
     };
 
     fetchTeamMembers();
-
-    return () => {};
   }, []);
 
   return (
     <div className="flex flex-col items-center justify-center w-full mb-10">
       <h2 className="text-lg font-semibold mb-6">About Us</h2>
 
-      <div className="w-full max-w-xl p-8 bg-white shadow-md rounded-lg">
+      <div className="w-full max-w-4xl p-8 bg-white shadow-md rounded-lg">
         <h3 className="text-xl font-semibold mb-4">Our Story</h3>
         <p className="mb-6">
           We are a non-profit organization dedicated to connecting families with
@@ -37,7 +36,7 @@ const AboutUs = () => {
           <div>
             <h3 className="text-xl font-semibold mb-4">Meet the Team</h3>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-flow-col auto-cols-fr gap-4 overflow-x-auto">
               {teamMembers.map((member, index) => (
                 <MemberBadge
                   key={index}
