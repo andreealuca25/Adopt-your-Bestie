@@ -4,7 +4,7 @@ import Reviews from "./Reviews";
 
 const ReviewsContainer = () => {
   return (
-    <NavBarFooterWrapper topPadding="pt-32">
+    <NavBarFooterWrapper topPadding="pt-16">
       <Reviews />
     </NavBarFooterWrapper>
   );
