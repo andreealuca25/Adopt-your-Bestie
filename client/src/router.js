@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Homepage from "./components/homepage/Homepage";
-import ErrorPage from "./components/error/ErrorPage";
+import ErrorPage from "./components/common/ErrorPage";
 import DonationContainer from "./components/donation/DonationContainer";
 import LostAndFoundContainer from "./components/lostAndFound/LostAndFoundContainer";
 import AboutUsContainer from "./components/aboutUs/AboutUsContainer";
