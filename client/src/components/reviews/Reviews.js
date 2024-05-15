@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ReviewBadge from "./ReviewBadge";
 import axios from "axios";
 import { Link } from "react-router-dom";

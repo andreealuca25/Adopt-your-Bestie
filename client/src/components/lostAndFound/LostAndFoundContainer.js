@@ -1,4 +1,3 @@
-import React from "react";
 import LostAndFoundMap from "./LostAndFoundMap";
 import FoundPetInstructions from "./FoundPetInstructions";
 import NavBarFooterWrapper from "../wrapper/NavBarFooterWrapper";

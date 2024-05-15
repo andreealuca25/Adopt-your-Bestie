@@ -1,5 +1,3 @@
-import React from "react";
-
 const MemberBadge = ({ name, role, description, icon }) => {
   return (
     <div className="bg-white p-4 rounded-lg shadow-md flex flex-col sm:flex-row items-center gap-4">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import PetBadge from "./PetBadge";
 import { petTypes } from "../../utils/pets";
 import axios from "axios";

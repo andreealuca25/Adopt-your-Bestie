@@ -1,4 +1,3 @@
-import React from "react";
 import FoundPetForm from "./FoundPetForm";
 import NavBarFooterWrapper from "../wrapper/NavBarFooterWrapper";
 

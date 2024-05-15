@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import MemberBadge from "./MemberBadge";
 import axios from "axios";
 

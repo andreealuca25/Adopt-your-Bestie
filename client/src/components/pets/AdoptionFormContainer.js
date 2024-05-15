@@ -1,4 +1,3 @@
-import React from "react";
 import NavBarFooterWrapper from "../wrapper/NavBarFooterWrapper";
 import AdoptionForm from "./AdoptionForm";
 const AdoptionFormContainer = () => {
