@@ -13,7 +13,12 @@ public class EmailController {
     private EmailService emailService;
 
     @PostMapping("/adopt")
-    public ResponseEntity<?> sendAdoptionRequestEmail(@RequestParam String to, @RequestParam String subject, @RequestParam String body) {
+    public ResponseEntity<?> sendAdoptionEmail(@RequestParam String to, @RequestParam String subject, @RequestParam String body) {
         return emailService.sendAdoptionRequestEmail(to, subject, body);
+    }
+
+    @PostMapping("/contact")
+    public ResponseEntity<?> sendContactUsEmail(@RequestParam String to, @RequestParam String subject, @RequestParam String body) {
+        return emailService.sendContactOnHoldEmail(to, subject, body);
     }
 }
