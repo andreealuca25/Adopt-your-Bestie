@@ -2,7 +2,7 @@ import NavBarFooterWrapper from "../wrapper/NavBarFooterWrapper";
 import Pets from "./Pets";
 const PetsContainer = () => {
   return (
-    <NavBarFooterWrapper topPadding="pt-10">
+    <NavBarFooterWrapper topPadding="pt-16">
       <Pets />
     </NavBarFooterWrapper>
   );

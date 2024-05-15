@@ -71,88 +71,89 @@ const Pets = () => {
   }, [filter, pets]);
 
   return (
-    <div className="flex flex-col items-center justify-center w-full min-h-screen p-10">
-      <div className="flex gap-8 mb-8">
-        <div className="flex flex-col gap-2 justify-center">
+    <div className="flex flex-col items-center justify-center w-full ">
+      <div className="flex gap-2 mb-2 ">
+        <div className="flex flex-col gap-0.5 justify-center">
           {petTypes.map((petType, key) => (
             <button
               key={key}
               onClick={() => setPetType(petType)}
-              className="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-6 rounded-md transition-colors"
+              className="font-bold py-1 px-3 text-sm"
             >
               {petType !== "" ? petType + "s" : "All"}
             </button>
           ))}
         </div>
 
-        <div className="w-full max-w-3xl p-8 bg-white shadow-md rounded-lg">
-          <div className="flex flex-wrap items-center gap-4 mb-6">
-            <div className="flex flex-col">
-              <label
-                className="text-sm font-medium text-gray-700"
-                htmlFor="breed"
-              >
-                Breed:
-              </label>
-              <input
-                id="breed"
-                name="breed"
-                value={filter.breed}
-                onChange={handleFilterChange}
-                className="px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-              />
-            </div>
+        <div className="w-full max-w-5xl p-2 bg-white shadow-md rounded-lg">
+          <div className="w-full max-w-5xl p-2 bg-white">
+            <div className="grid grid-cols-4 gap-4 mb-2 items-end">
+              <div className="flex flex-col col-span-1">
+                <label
+                  className="text-xs font-medium text-gray-700"
+                  htmlFor="breed"
+                >
+                  Breed:
+                </label>
+                <input
+                  id="breed"
+                  name="breed"
+                  value={filter.breed}
+                  onChange={handleFilterChange}
+                  className="px-2 py-1 border border-gray-300 rounded-md shadow-sm text-sm"
+                />
+              </div>
 
-            <div className="flex flex-col">
-              <label
-                className="text-sm font-medium text-gray-700"
-                htmlFor="gender"
-              >
-                Gender:
-              </label>
-              <select
-                id="gender"
-                name="gender"
-                value={filter.gender}
-                onChange={handleFilterChange}
-                className="px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-              >
-                <option value="">Any</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select>
-            </div>
+              <div className="flex flex-col col-span-1">
+                <label
+                  className="text-xs font-medium text-gray-700"
+                  htmlFor="gender"
+                >
+                  Gender:
+                </label>
+                <select
+                  id="gender"
+                  name="gender"
+                  value={filter.gender}
+                  onChange={handleFilterChange}
+                  className="px-2 py-1 border border-gray-300 rounded-md shadow-sm text-sm"
+                >
+                  <option value="">Any</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
 
-            <div className="flex flex-col">
-              <label
-                className="text-sm font-medium text-gray-700"
-                htmlFor="age"
-              >
-                Age:
-              </label>
-              <select
-                id="age"
-                name="age"
-                value={filter.age}
-                onChange={handleFilterChange}
-                className="px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-              >
-                <option value="">Any</option>
-                <option value="6 months">6 months</option>
-                <option value="1 year">1 year</option>
-                <option value="2 years">2 years</option>
-              </select>
-            </div>
+              <div className="flex flex-col col-span-1">
+                <label
+                  className="text-xs font-medium text-gray-700"
+                  htmlFor="age"
+                >
+                  Age:
+                </label>
+                <select
+                  id="age"
+                  name="age"
+                  value={filter.age}
+                  onChange={handleFilterChange}
+                  className="px-2 py-1 border border-gray-300 rounded-md shadow-sm text-sm"
+                >
+                  <option value="">Any</option>
+                  <option value="6 months">6 months</option>
+                  <option value="1 year">1 year</option>
+                  <option value="2 years">2 years</option>
+                </select>
+              </div>
 
-            <div className="flex flex-col"></div>
-            <button
-              className="px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-              onClick={() => {
-                setFilter({ breed: "", gender: "", age: "", petType: "" });
-              }}
-            >
-              Reset
-            </button>
+              <button
+                className="px-2 py-1 border border-gray-300 rounded-md shadow-sm text-sm col-span-1"
+                onClick={() => {
+                  setFilter({ breed: "", gender: "", age: "", petType: "" });
+                }}
+              >
+                Reset
+              </button>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 items-end">

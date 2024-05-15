@@ -3,7 +3,7 @@ import Banner from "./Banner";
 
 const Homepage = () => {
   return (
-    <NavBarFooterWrapper topPadding="pt-6">
+    <NavBarFooterWrapper topPadding="pt-12">
       <Banner />
     </NavBarFooterWrapper>
   );

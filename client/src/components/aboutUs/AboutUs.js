@@ -22,8 +22,6 @@ const AboutUs = () => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full mb-10">
-      <h2 className="text-lg font-semibold mb-6">About Us</h2>
-
       <div className="w-full max-w-4xl p-8 bg-white shadow-md rounded-lg">
         <h3 className="text-xl font-semibold mb-4">Our Story</h3>
         <p className="mb-6">
