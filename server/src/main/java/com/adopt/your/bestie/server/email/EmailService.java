@@ -1,5 +1,6 @@
 package com.adopt.your.bestie.server.email;
 import com.adopt.your.bestie.server.model.ApiResponse;
+import com.adopt.your.bestie.server.model.FoundPet;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 
 @Service
 public class EmailService {
@@ -57,6 +60,36 @@ public class EmailService {
                     "<p style='text-align: center; margin-top: 20px; font-size: 16px; color: #777;'>Warm regards,<br>AdoptYourBestie Team</p>" +
                     "</div>" +
                     "</body></html>", true);
+
+            javaMailSender.send(message);
+            ApiResponse successResponse = new ApiResponse("Email sent", 200);
+            return ResponseEntity.ok(successResponse);
+        } catch (MessagingException e) {
+            ApiResponse errorResponse = new ApiResponse("Failed to send email: " + e.getMessage(), 500);
+            return ResponseEntity.status(500).body(errorResponse);
+        }
+    }
+
+    public ResponseEntity<ApiResponse> sendFoundPetEmail(String to, String subject, FoundPet body, MultipartFile attachment) {
+        try {
+            MimeMessage message = javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText("<html><body style='font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;'>" +
+                    "<div style='max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);'>" +
+                    "<h1 style='color: #333; text-align: center;'>Found Pet Report</h1>" +
+                    "<p style='color: #555; font-size: 16px;'>Here are the details of the found pet:</p>" +
+                    "<div style='border-left: 4px solid #4CAF50; background-color: #f9f9f9; padding: 10px; font-size: 16px; margin-top: 10px;'>" + body.toEmailContent() + "</div>" +
+                    "<p style='color: #555; font-size: 16px;'>Thank you for using our service. We will go to that location, search for the pet, and keep in contact with you. We hope to reunite the pet with its owner soon.</p>" +
+                    "<p style='text-align: center; margin-top: 20px; font-size: 16px; color: #777;'>Warm regards,<br>AdoptYourBestie Team</p>" +
+                    "</div>" +
+                    "</body></html>", true);
+
+            if (attachment != null && !attachment.isEmpty()) {
+                helper.addAttachment(attachment.getOriginalFilename() != null ? attachment.getOriginalFilename() : "", attachment);
+            }
 
             javaMailSender.send(message);
             ApiResponse successResponse = new ApiResponse("Email sent", 200);
