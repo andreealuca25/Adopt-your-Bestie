@@ -1,30 +1,31 @@
 package com.adopt.your.bestie.server.controller;
 
-import com.adopt.your.bestie.server.PaymentService;
+import com.adopt.your.bestie.server.service.PaymentService;
 import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/payment")
+@RequestMapping("/payment")
 public class PaymentController {
 
-    private final PaymentService paymentService;
-
-    @Autowired
-    public PaymentController(PaymentService paymentService) {
-        this.paymentService = paymentService;
-    }
+     @Autowired
+    private PaymentService paymentService;
 
     @PostMapping("/create")
-    public PaymentIntent createPaymentIntent(@RequestParam Long amount, @RequestParam String currency) {
-        try {
-            return paymentService.createPaymentIntent(amount, currency);
-        } catch (StripeException e) {
-            // Handle exception (log it, rethrow it, etc.)
-            e.printStackTrace();
-            return null;
-        }
+    public Map<String, String> createPaymentIntent(@RequestBody Map<String, Object> data) throws Exception {
+        int amount = (int) data.get("amount");
+
+        PaymentIntent intent = paymentService.createPaymentIntent(amount);
+
+        Map<String, String> responseData = new HashMap<>();
+        responseData.put("clientSecret", intent.getClientSecret());
+
+        return responseData;
     }
 }
