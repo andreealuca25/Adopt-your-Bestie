@@ -3,16 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@stripe/react-stripe-js": "^1.16.5",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+<<<<<<< HEAD
     "axios": "^1.6.8",
+=======
+<<<<<<< Updated upstream
+>>>>>>> client_BMF
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+=======
+    "axios": "^1.6.8",
+    "leaflet": "^1.9.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-leaflet": "^4.2.1",
+>>>>>>> Stashed changes
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
-    "tailwind": "^4.0.0",
-    "web-vitals": "^2.1.4"
+    "tailwind": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,6 +50,7 @@
     ]
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.3"
+    "tailwindcss": "^3.4.3",
+    "web-vitals": "^4.0.1"
   }
 }
