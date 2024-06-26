@@ -1,61 +1,57 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import PetBadge from "./PetBadge";
 import { petTypes } from "../../utils/pets";
 import axios from "axios";
 
 const Pets = () => {
   const [pets, setPets] = useState([]);
-  const [filteredPets, setFilteredPets] = useState([]);
   const [filter, setFilter] = useState({
     breed: "",
     gender: "",
     age: "",
     petType: "",
   });
-
   const [loading, setLoading] = useState(true);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   useEffect(() => {
     const fetchPets = async () => {
-      axios
-        .get("http://localhost:8080/pets")
-        .then((response) => {
-          setPets(response.data);
-          console.log(response.data);
-          setFilteredPets(response.data);
-          setLoading(false);
-          setShowErrorMessage(false);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          setLoading(false);
-          setShowErrorMessage(true);
-        });
+      try {
+        const response = await axios.get("http://localhost:8080/pets");
+        setPets(response.data);
+        setLoading(false);
+        setShowErrorMessage(false);
+      } catch (error) {
+        console.error("Error:", error);
+        setLoading(false);
+        setShowErrorMessage(true);
+      }
     };
 
     fetchPets();
-
-    return () => {};
   }, []);
 
-  const handleFilterChange = (e) => {
+  const handleFilterChange = useCallback((e) => {
     const { name, value } = e.target;
     setFilter((prevFilter) => ({
       ...prevFilter,
       [name]: value,
     }));
-  };
+  }, []);
 
-  const setPetType = (type) => {
+  const setPetType = useCallback((type) => {
     setFilter((prevFilter) => ({
       ...prevFilter,
       petType: type,
     }));
-  };
+  }, []);
 
-  useEffect(() => {
-    const filtered = pets.filter((pet) => {
+  const resetFilters = useCallback(() => {
+    setFilter({ breed: "", gender: "", age: "", petType: "" });
+  }, []);
+
+  const filteredPets = useMemo(() => {
+    return pets.filter((pet) => {
       return (
         (!filter.breed ||
           pet.breed.toLowerCase().includes(filter.breed.toLowerCase())) &&
@@ -66,94 +62,88 @@ const Pets = () => {
           pet.petType.toLowerCase() === filter.petType.toLowerCase())
       );
     });
-
-    setFilteredPets(filtered);
   }, [filter, pets]);
 
   return (
-    <div className="flex flex-col items-center justify-center w-full ">
-      <div className="flex gap-2 mb-2 ">
-        <div className="flex flex-col gap-0.5 justify-center">
+    <div className="flex flex-col items-center justify-center w-full">
+      <div className="flex gap-4 mb-4">
+        <div className="flex flex-col justify-center gap-2 p-4 bg-white shadow-md rounded-lg">
           {petTypes.map((petType, key) => (
             <button
               key={key}
               onClick={() => setPetType(petType)}
-              className="font-bold py-1 px-3 text-sm"
+              className="font-bold py-2 px-4 text-sm text-white bg-purple-600 hover:bg-purple-700 rounded-md transition duration-200"
             >
               {petType !== "" ? petType + "s" : "All"}
             </button>
           ))}
         </div>
 
-        <div className="w-full max-w-5xl p-2 bg-white shadow-md rounded-lg">
-          <div className="w-full max-w-5xl p-2 bg-white">
-            <div className="grid grid-cols-4 gap-4 mb-2 items-end">
-              <div className="flex flex-col col-span-1">
-                <label
-                  className="text-xs font-medium text-gray-700"
-                  htmlFor="breed"
-                >
-                  Breed:
-                </label>
-                <input
-                  id="breed"
-                  name="breed"
-                  value={filter.breed}
-                  onChange={handleFilterChange}
-                  className="px-2 py-1 border border-gray-300 rounded-md shadow-sm text-sm"
-                />
-              </div>
-
-              <div className="flex flex-col col-span-1">
-                <label
-                  className="text-xs font-medium text-gray-700"
-                  htmlFor="gender"
-                >
-                  Gender:
-                </label>
-                <select
-                  id="gender"
-                  name="gender"
-                  value={filter.gender}
-                  onChange={handleFilterChange}
-                  className="px-2 py-1 border border-gray-300 rounded-md shadow-sm text-sm"
-                >
-                  <option value="">Any</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                </select>
-              </div>
-
-              <div className="flex flex-col col-span-1">
-                <label
-                  className="text-xs font-medium text-gray-700"
-                  htmlFor="age"
-                >
-                  Age:
-                </label>
-                <select
-                  id="age"
-                  name="age"
-                  value={filter.age}
-                  onChange={handleFilterChange}
-                  className="px-2 py-1 border border-gray-300 rounded-md shadow-sm text-sm"
-                >
-                  <option value="">Any</option>
-                  <option value="6 months">6 months</option>
-                  <option value="1 year">1 year</option>
-                  <option value="2 years">2 years</option>
-                </select>
-              </div>
-
-              <button
-                className="px-2 py-1 border border-gray-300 rounded-md shadow-sm text-sm col-span-1"
-                onClick={() => {
-                  setFilter({ breed: "", gender: "", age: "", petType: "" });
-                }}
+        <div className="w-full max-w-5xl p-4 bg-white shadow-md rounded-lg">
+          <div className="grid grid-cols-4 gap-4 mb-4 items-end">
+            <div className="flex flex-col col-span-1">
+              <label
+                className="text-xs font-medium text-gray-700"
+                htmlFor="breed"
               >
-                Reset
-              </button>
+                Breed:
+              </label>
+              <input
+                id="breed"
+                name="breed"
+                value={filter.breed}
+                onChange={handleFilterChange}
+                className="px-2 py-1 border border-gray-300 rounded-md shadow-sm text-sm"
+              />
             </div>
+
+            <div className="flex flex-col col-span-1">
+              <label
+                className="text-xs font-medium text-gray-700"
+                htmlFor="gender"
+              >
+                Gender:
+              </label>
+              <select
+                id="gender"
+                name="gender"
+                value={filter.gender}
+                onChange={handleFilterChange}
+                className="px-2 py-1 border border-gray-300 rounded-md shadow-sm text-sm"
+              >
+                <option value="">Any</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+
+            <div className="flex flex-col col-span-1">
+              <label
+                className="text-xs font-medium text-gray-700"
+                htmlFor="age"
+              >
+                Age:
+              </label>
+              <select
+                id="age"
+                name="age"
+                value={filter.age}
+                onChange={handleFilterChange}
+                className="px-2 py-1 border border-gray-300 rounded-md shadow-sm text-sm"
+              >
+                <option value="">Any</option>
+                <option value="6 months">6 months</option>
+                <option value="1 year">1 year</option>
+                <option value="2 years">2 years</option>
+              </select>
+            </div>
+
+            <button
+              className="px-2 py-1 border border-gray-300 rounded-md shadow-sm text-sm col-span-1 bg-purple-500 text-white hover:bg-purple-600 transition duration-200"
+              onClick={resetFilters}
+            >
+              Reset
+            </button>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 items-end">
