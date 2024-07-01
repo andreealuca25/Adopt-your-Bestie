@@ -27,3 +27,5 @@ package-lock.json
 # specific app files
 reportWebVitals.js
 setupTests.js
+
+.env
